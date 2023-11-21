@@ -1,0 +1,363 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.galcar.tami4edge",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local",
+    "cloud"
+  ],
+  "name": {
+    "en": "Tami4-Edge"
+  },
+  "description": {
+    "en": "Control Tami4 Countertop Water Bar"
+  },
+  "category": [
+    "appliances"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Gal Carmeli",
+    "email": "carmeli128@gmail.com"
+  },
+  "flow": {
+    "triggers": [
+      {
+        "id": "uv_lamp_replacement_in_a_few_days",
+        "title": {
+          "en": "The UV Lamp will need to be replaces in a few days"
+        },
+        "titleFormatted": {
+          "en": "The UV Lamp will need to be replaced in exactly [[days]] days"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          },
+          {
+            "name": "days",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "filter_replacement_in_a_few_days",
+        "title": {
+          "en": "The Fileter will need to be replaces in a few days"
+        },
+        "titleFormatted": {
+          "en": "The Filter will need to be replaced in exactly [[days]] days"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          },
+          {
+            "name": "days",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "uv_lamp_replacement",
+        "title": {
+          "en": "The UV Lamp needs to be replaced"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          }
+        ]
+      },
+      {
+        "id": "filter_replacement",
+        "title": {
+          "en": "The Filter needs to be replaced"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          }
+        ]
+      }
+    ],
+    "conditions": [
+      {
+        "id": "uv_lamp_replacement",
+        "title": {
+          "en": "The UV Lamp needs to be replaced"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          }
+        ]
+      },
+      {
+        "id": "filter_replacement",
+        "title": {
+          "en": "The Filter needs to be replaced"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          }
+        ]
+      },
+      {
+        "id": "uv_lamp_replacement_in_a_few_days",
+        "title": {
+          "en": "The UV Lamp will need to be replaces in a few days"
+        },
+        "titleFormatted": {
+          "en": "The UV Lamp will need to be replaced in [[days]] days or less"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          },
+          {
+            "name": "days",
+            "type": "number"
+          }
+        ]
+      },
+      {
+        "id": "filter_replacement_in_a_few_days",
+        "title": {
+          "en": "The Fileter will need to be replaces in a few days"
+        },
+        "titleFormatted": {
+          "en": "The Filter will need to be replaced in [[days]] days or less"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          },
+          {
+            "name": "days",
+            "type": "number"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "boil_water",
+        "title": {
+          "en": "Boil Water"
+        },
+        "hint": {
+          "en": "Start boiling the wanter"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          }
+        ]
+      },
+      {
+        "id": "prepare_drink",
+        "title": {
+          "en": "Prepare A Drink"
+        },
+        "titleFormatted": {
+          "en": "Prepare [[drink_name]]"
+        },
+        "hint": {
+          "en": "Prepare a User Specific or a Generic Drink"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tami4-edge-plus"
+          },
+          {
+            "name": "drink_name",
+            "type": "autocomplete",
+            "title": {
+              "en": "Drink Name"
+            },
+            "placeholder": {
+              "en": "Start typinig to see all available drinks"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Tami4-Edge-Plus"
+      },
+      "class": "other",
+      "capabilities": [
+        "boil_water",
+        "uv_lamp_remaining_days",
+        "filter_remaining_days"
+      ],
+      "platforms": [
+        "local",
+        "cloud"
+      ],
+      "connectivity": [],
+      "images": {
+        "small": "/drivers/tami4-edge-plus/assets/images/small.png",
+        "large": "/drivers/tami4-edge-plus/assets/images/large.png",
+        "xlarge": "/drivers/tami4-edge-plus/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "list_device",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "tami4-edge-plus",
+      "settings": [
+        {
+          "id": "smart_heating_mode",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Smart Heating Mode"
+          }
+        },
+        {
+          "id": "lightning",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Lightning"
+          }
+        },
+        {
+          "id": "buttons_sound",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Buttons Sound"
+          }
+        },
+        {
+          "id": "night_mode",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Night Mode"
+          }
+        },
+        {
+          "id": "push_and_drink",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Push and Drink"
+          }
+        },
+        {
+          "id": "save_energy_mode",
+          "type": "checkbox",
+          "value": true,
+          "label": {
+            "en": "Energy Save Mode"
+          }
+        },
+        {
+          "id": "child_lock_label",
+          "type": "label",
+          "label": {
+            "en": "Child Lock"
+          },
+          "value": "Enabled",
+          "hint": {
+            "en": "For safety reasons, the Child Lock option can only be set from the device itself"
+          }
+        }
+      ]
+    }
+  ],
+  "capabilities": {
+    "boil_water": {
+      "type": "boolean",
+      "title": {
+        "en": "Boil Water__"
+      },
+      "desc": {
+        "en": "Start boilinb the water"
+      },
+      "getable": false,
+      "setable": true,
+      "uiComponent": "button",
+      "uiQuickAction": true,
+      "icon": "/assets/icon.svg"
+    },
+    "filter_remaining_days": {
+      "type": "number",
+      "title": {
+        "en": "Filter Replacement"
+      },
+      "desc": {
+        "en": "Days remaining till the filter needs to be replaced"
+      },
+      "units": {
+        "en": "d"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    },
+    "uv_lamp_remaining_days": {
+      "type": "number",
+      "title": {
+        "en": "UV Lamp Replacement"
+      },
+      "desc": {
+        "en": "Days remaining till the UV lamp needs to be replaced"
+      },
+      "units": {
+        "en": "d"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "uiQuickAction": false,
+      "icon": "/assets/icon.svg"
+    }
+  }
+}

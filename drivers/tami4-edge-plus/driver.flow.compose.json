@@ -1,0 +1,87 @@
+{
+    "actions": [
+      {
+        "id": "boil_water",
+        "title": { "en": "Boil Water" },
+        "hint": { "en": "Start boiling the wanter" }
+      },
+      {
+        "id": "prepare_drink",
+        "title": {"en": "Prepare A Drink"},
+        "titleFormatted" : {"en": "Prepare [[drink_name]]"},
+        "hint": {"en" : "Prepare a User Specific or a Generic Drink"},
+        "args": [
+            {
+            "name": "drink_name",
+            "type": "autocomplete",
+            "title": { "en": "Drink Name" },
+            "placeholder": { "en": "Start typinig to see all available drinks" }
+            }
+        ]
+      }
+    ],
+    "triggers" : [
+        {
+            "id": "uv_lamp_replacement_in_a_few_days",
+            "title": {"en": "The UV Lamp will need to be replaces in a few days"},
+            "titleFormatted" : {"en": "The UV Lamp will need to be replaced in exactly [[days]] days"},
+            "args": [
+                {
+                  "name": "days",
+                  "type": "number"
+                }
+            ]
+        },
+        {
+            "id": "filter_replacement_in_a_few_days",
+            "title": {"en": "The Fileter will need to be replaces in a few days"},
+            "titleFormatted" : {"en": "The Filter will need to be replaced in exactly [[days]] days"},
+            "args": [
+                {
+                  "name": "days",
+                  "type": "number"
+                }
+            ]
+        },
+        {
+            "id": "uv_lamp_replacement",
+            "title": { "en" : "The UV Lamp needs to be replaced"}
+        },
+        {
+            "id": "filter_replacement",
+            "title" : {"en":"The Filter needs to be replaced"}
+        }
+    ],
+    "conditions" : [
+        {
+            "id": "uv_lamp_replacement",
+            "title": { "en" : "The UV Lamp needs to be replaced"}
+        },
+        {
+            "id": "filter_replacement",
+            "title" : {"en":"The Filter needs to be replaced"}
+        },
+        {
+            "id": "uv_lamp_replacement_in_a_few_days",
+            "title": {"en": "The UV Lamp will need to be replaces in a few days"},
+            "titleFormatted" : {"en": "The UV Lamp will need to be replaced in [[days]] days or less"},
+            "args": [
+                {
+                    "name": "days",
+                    "type": "number"
+                }
+            ]
+        },
+        {
+            "id": "filter_replacement_in_a_few_days",
+            "title": {"en": "The Fileter will need to be replaces in a few days"},
+            "titleFormatted" : {"en": "The Filter will need to be replaced in [[days]] days or less"},
+            "args": [
+                {
+                    "name": "days",
+                    "type": "number"
+                }
+            ]
+        }
+    ]
+}

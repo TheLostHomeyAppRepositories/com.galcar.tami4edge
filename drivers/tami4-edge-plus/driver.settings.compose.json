@@ -1,0 +1,45 @@
+[
+    {
+        "id": "smart_heating_mode",
+        "type": "checkbox",
+        "value": true,
+        "label": { "en": "Smart Heating Mode" }
+    },
+    {
+        "id": "lightning",
+        "type": "checkbox",
+        "value": true,
+        "label": { "en": "Lightning" }
+    },
+    {
+        "id": "buttons_sound",
+        "type": "checkbox",
+        "value": true,
+        "label": { "en": "Buttons Sound" }
+    },
+    {
+        "id": "night_mode",
+        "type": "checkbox",
+        "value": true,
+        "label": { "en": "Night Mode" }
+    },
+    {
+        "id": "push_and_drink",
+        "type": "checkbox",
+        "value": true,
+        "label": { "en": "Push and Drink" }
+    },
+    {
+        "id": "save_energy_mode",
+        "type": "checkbox",
+        "value": true,
+        "label": { "en": "Energy Save Mode" }
+    },
+    {
+        "id": "child_lock_label",
+        "type": "label",
+        "label": { "en": "Child Lock" },
+        "value": "Enabled",
+        "hint": { "en": "For safety reasons, the Child Lock option can only be set from the device itself" }
+    }
+]
