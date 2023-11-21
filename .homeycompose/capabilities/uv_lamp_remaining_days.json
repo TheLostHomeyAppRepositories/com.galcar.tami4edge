@@ -1,0 +1,11 @@
+{
+  "type": "number",
+  "title": { "en": "UV Lamp Replacement" },
+  "desc": {"en": "Days remaining till the UV lamp needs to be replaced"},
+  "units" : {"en": "d"},
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "uiQuickAction": false,
+  "icon": "/assets/icon.svg"
+}

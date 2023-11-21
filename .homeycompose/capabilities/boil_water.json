@@ -1,0 +1,10 @@
+{
+    "type": "boolean",
+    "title": { "en": "Boil Water__" },
+    "desc": {"en": "Start boilinb the water"},
+    "getable": false,
+    "setable": true,
+    "uiComponent": "button",
+    "uiQuickAction": true,
+    "icon": "/assets/icon.svg"
+  }
