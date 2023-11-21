@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- The '/homey.js' script must be included in your settings view to work -->
+    <script
+      type="text/javascript"
+      src="/homey.js"
+      data-origin="settings"
+    ></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header class="homey-header">
+      <h1 class="homey-title" data-i18n="settings.title">
+        <!-- This will be filled with the translated string with key 'settings.title'. -->
+      </h1>
+      <p class="homey-subtitle" data-i18n="settings.subtitle">
+        <!-- This field will also be translated -->
+      </p>
+    </header>
+
+    <fieldset class="homey-form-fieldset">
+      <legend class="homey-form-legend">Tami4-Edge App Settings</legend>
+
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="phone-number">Phone Number (e.g.: +9721234567890):</label>
+        <input class="homey-form-input" id="phone-number" type="text" value="" />
+        <button id="get-otp" class="homey-button-primary-full">Get OTP SMS</button>
+      </div>
+      <div class="homey-form-group">
+        <label class="homey-form-label" for="otp">OTP:</label>
+        <input class="homey-form-input" id="otp" type="text" value=""/>
+        <button id="get-token" class="homey-button-primary-full">Get Token</button>
+      </div>
+    </fieldset>
+    <div class="homey-form-group" id="tokens-div">
+        <table id="tokens-table">
+            <tr>
+                <th><label class="homey-form-label">Phone</label></th>
+                <th><label class="homey-form-label">Token</label></th>
+                <th><label class="homey-form-label">Delete</label></th>
+            </tr>
+            <tr valign="center">
+                <td><input class="homey-form-input" id="phone1" type="text" value="" disabled/></td>
+                <td><input class="homey-form-input" id="token1" type="text" value="" disabled/></td>
+                <td><button><i class="fa fa-trash" id="del-token1"></i></button></td>
+            </tr>
+        </table>
+    </div>
+    <button id="save" class="homey-button-primary-full">Save changes</button>
+
+    <script type="text/javascript">
+        function refreshState() {
+            Homey.get("phone1", function(err,phone) {
+                if (err) return Homey.alert(err);
+                if (phone != null) {
+                    document.getElementById("phone1").value = phone;
+                }
+            })
+
+            Homey.get("token1", function(err,token) {
+                if (err) return Homey.alert(err);
+                if (token != null) {
+                    document.getElementById("token1").value = token;
+                }
+            })
+        }
+
+      // a method named 'onHomeyReady' must be present in your code
+      function onHomeyReady(Homey) {
+        // Tell Homey we're ready to be displayed
+        Homey.ready();
+        refreshState();
+
+        var phoneNumberElement = document.getElementById("phone-number");
+        var otpElement = document.getElementById("otp");
+        var getOtpElement = document.getElementById("get-otp");
+        var getTokenElement = document.getElementById("get-token");
+        var removeToken1 = document.getElementById("del-token1");
+        
+        getOtpElement.addEventListener("click", function (e) {
+            Homey.set("phoneNumber", phoneNumberElement.value, function (err) {
+                if (err) return Homey.alert(err);
+            });
+        });
+        
+        getTokenElement.addEventListener("click", function (e) {
+            Homey.set("OTP", otpElement.value, function (err) {
+                if (err) return Homey.alert(err);
+            });
+        });
+
+
+        // removeToken1.addEventListener("click", function (e) {
+        //     Homey.alert("Del 1");
+        // });
+
+        Homey.on("settings.set",function() {
+            refreshState();
+        })
+      }
+    </script>
+  </body>
+</html>
