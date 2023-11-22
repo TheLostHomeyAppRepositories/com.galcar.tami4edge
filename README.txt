@@ -1,2 +1,2 @@
-Control Tami4 Countertop Water Bar a
+Control Tami4 Countertop Water Bar
 
