@@ -7,7 +7,7 @@
       src="/homey.js"
       data-origin="settings"
     ></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
   </head>
   <body>
     <header class="homey-header">
@@ -38,16 +38,15 @@
             <tr>
                 <th><label class="homey-form-label">Phone</label></th>
                 <th><label class="homey-form-label">Token</label></th>
-                <th><label class="homey-form-label">Delete</label></th>
+                <!-- <th><label class="homey-form-label">Delete</label></th> -->
             </tr>
             <tr valign="center">
                 <td><input class="homey-form-input" id="phone1" type="text" value="" disabled/></td>
                 <td><input class="homey-form-input" id="token1" type="text" value="" disabled/></td>
-                <td><button><i class="fa fa-trash" id="del-token1"></i></button></td>
+                <!-- <td><button><i class="fa fa-trash" id="del-token1"></i></button></td> -->
             </tr>
         </table>
     </div>
-    <button id="save" class="homey-button-primary-full">Save changes</button>
 
     <script type="text/javascript">
         function refreshState() {
@@ -76,7 +75,9 @@
         var otpElement = document.getElementById("otp");
         var getOtpElement = document.getElementById("get-otp");
         var getTokenElement = document.getElementById("get-token");
-        var removeToken1 = document.getElementById("del-token1");
+        // var removeToken1 = document.getElementById("del-token1");
+        var tokenElement = document.getElementById("token1");
+        var phoneElement = document.getElementById("phone1");
         
         getOtpElement.addEventListener("click", function (e) {
             Homey.set("phoneNumber", phoneNumberElement.value, function (err) {
@@ -89,7 +90,6 @@
                 if (err) return Homey.alert(err);
             });
         });
-
 
         // removeToken1.addEventListener("click", function (e) {
         //     Homey.alert("Del 1");

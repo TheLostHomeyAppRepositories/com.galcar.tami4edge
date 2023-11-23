@@ -9,23 +9,44 @@
     "cloud"
   ],
   "name": {
-    "en": "Tami4-Edge"
+    "en": "Tami4 Edge Plus"
   },
   "description": {
-    "en": "Control Tami4 Countertop Water Bar"
+    "en": "Prepare drinks, boil water and maintain your Tami4 Edge Plus Countertop Water Bar"
   },
   "category": [
     "appliances"
   ],
+  "brandColor": "#08AEEF",
+  "tags": {
+    "en": [
+      "Tami4",
+      "Edge",
+      "Water",
+      "Waterbar"
+    ]
+  },
+  "source": "https://https://github.com/gal-car/com.galcar.tami4edge",
+  "support": "mailto:carmeli128@gmail.com",
+  "bugs": {
+    "url": "https://github.com/gal-car/com.galcar.tami4edge/issues"
+  },
   "permissions": [],
   "images": {
-    "small": "/assets/images/small.png",
-    "large": "/assets/images/large.png",
-    "xlarge": "/assets/images/xlarge.png"
+    "small": "/assets/images/App-Small-2.png",
+    "large": "/assets/images/App-Large-2.png",
+    "xlarge": "/assets/images/App-XLarge-2.png"
   },
   "author": {
     "name": "Gal Carmeli",
     "email": "carmeli128@gmail.com"
+  },
+  "contributing": {
+    "donate": {
+      "paypal": {
+        "username": "GalCarmeli"
+      }
+    }
   },
   "flow": {
     "triggers": [
@@ -45,7 +66,8 @@
           },
           {
             "name": "days",
-            "type": "number"
+            "type": "number",
+            "title": "Number of days remaining till UV lamp replacement is required"
           }
         ]
       },
@@ -65,7 +87,8 @@
           },
           {
             "name": "days",
-            "type": "number"
+            "type": "number",
+            "title": "Number of days remaining till filter replacement is required"
           }
         ]
       },
@@ -139,7 +162,8 @@
           },
           {
             "name": "days",
-            "type": "number"
+            "type": "number",
+            "title": "Number of days remaining till UV lamp replacement is required"
           }
         ]
       },
@@ -159,7 +183,8 @@
           },
           {
             "name": "days",
-            "type": "number"
+            "type": "number",
+            "title": "Number of days remaining till filter replacement is required"
           }
         ]
       }
@@ -229,9 +254,9 @@
       ],
       "connectivity": [],
       "images": {
-        "small": "/drivers/tami4-edge-plus/assets/images/small.png",
-        "large": "/drivers/tami4-edge-plus/assets/images/large.png",
-        "xlarge": "/drivers/tami4-edge-plus/assets/images/xlarge.png"
+        "small": "/drivers/tami4-edge-plus/assets/images/Small_whiteBG.png",
+        "large": "/drivers/tami4-edge-plus/assets/images/Large_whiteBG.png",
+        "xlarge": "/drivers/tami4-edge-plus/assets/images/XLarge_whiteBG.png"
       },
       "pair": [
         {
@@ -314,7 +339,7 @@
     "boil_water": {
       "type": "boolean",
       "title": {
-        "en": "Boil Water__"
+        "en": "Boil Water"
       },
       "desc": {
         "en": "Start boilinb the water"

@@ -1,6 +1,6 @@
 {
     "type": "boolean",
-    "title": { "en": "Boil Water__" },
+    "title": { "en": "Boil Water" },
     "desc": {"en": "Start boilinb the water"},
     "getable": false,
     "setable": true,

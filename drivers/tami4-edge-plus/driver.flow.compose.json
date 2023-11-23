@@ -28,7 +28,8 @@
             "args": [
                 {
                   "name": "days",
-                  "type": "number"
+                  "type": "number",
+                  "title": "Number of days remaining till UV lamp replacement is required"
                 }
             ]
         },
@@ -39,7 +40,8 @@
             "args": [
                 {
                   "name": "days",
-                  "type": "number"
+                  "type": "number",
+                  "title": "Number of days remaining till filter replacement is required"
                 }
             ]
         },
@@ -68,7 +70,8 @@
             "args": [
                 {
                     "name": "days",
-                    "type": "number"
+                    "type": "number",
+                    "title": "Number of days remaining till UV lamp replacement is required"
                 }
             ]
         },
@@ -79,7 +82,8 @@
             "args": [
                 {
                     "name": "days",
-                    "type": "number"
+                    "type": "number",
+                    "title": "Number of days remaining till filter replacement is required"
                 }
             ]
         }

@@ -65,11 +65,10 @@ class Tami4App extends Homey.App {
 
         this.homey.settings.set("phone1",phoneNumber);
         this.homey.settings.set("token1",token.refresh_token);  
-        this.homey.settings.unset("phoneNumber",phoneNumber);
-        this.homey.settings.unset("OTP",token.refresh_token);  
-        }       
+        this.homey.settings.unset("phoneNumber");
+        this.homey.settings.unset("OTP");  
       }
-    );
+    });
 
 
     //Token is written in the "token1" settings. Initilize API object by using it
