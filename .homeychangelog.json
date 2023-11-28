@@ -1,5 +1,8 @@
 {
   "1.0.0": {
     "en": "Initial Version"
+  },
+  "1.0.1": {
+    "en": "Split Country-code from Phone-number in settings window to be more reselient"
   }
 }
