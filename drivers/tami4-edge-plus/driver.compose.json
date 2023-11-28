@@ -9,8 +9,7 @@
     "filter_remaining_days"
   ],
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "connectivity": [],
   "images": {

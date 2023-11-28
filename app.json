@@ -5,8 +5,7 @@
   "compatibility": ">=5.0.0",
   "sdk": 3,
   "platforms": [
-    "local",
-    "cloud"
+    "local"
   ],
   "name": {
     "en": "Tami4 Edge Plus"
@@ -249,8 +248,7 @@
         "filter_remaining_days"
       ],
       "platforms": [
-        "local",
-        "cloud"
+        "local"
       ],
       "connectivity": [],
       "images": {
