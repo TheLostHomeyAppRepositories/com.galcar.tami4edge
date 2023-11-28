@@ -23,9 +23,18 @@
       <legend class="homey-form-legend">Tami4-Edge App Settings</legend>
 
       <div class="homey-form-group">
-        <label class="homey-form-label" for="phone-number">Phone Number (e.g.: +9721234567890):</label>
-        <input class="homey-form-input" id="phone-number" type="text" value="" />
+        <table border="0">
+        <tr>
+          <td width="30%"><label class="homey-form-label" for="country-code">Country Code:</label></td>
+          <td><label class="homey-form-label" for="phone-number">Phone Number:</label></td>
+        </tr>
+        <tr>
+          <td width="30%"><input class="homey-form-input" id="country-code" type="text" value="+972" /></td>
+          <td><input class="homey-form-input" id="phone-number" type="text" value="" /></td>
+        </tr>
+        </table>
         <button id="get-otp" class="homey-button-primary-full">Get OTP SMS</button>
+        </table>
       </div>
       <div class="homey-form-group">
         <label class="homey-form-label" for="otp">OTP:</label>
@@ -71,6 +80,7 @@
         Homey.ready();
         refreshState();
 
+        var countryCodeElement = document.getElementById("country-code");
         var phoneNumberElement = document.getElementById("phone-number");
         var otpElement = document.getElementById("otp");
         var getOtpElement = document.getElementById("get-otp");
@@ -80,7 +90,18 @@
         var phoneElement = document.getElementById("phone1");
         
         getOtpElement.addEventListener("click", function (e) {
-            Homey.set("phoneNumber", phoneNumberElement.value, function (err) {
+            var fullPhoneNumber;
+            if (countryCodeElement.value.startsWith("+")) {
+              fullPhoneNumber = countryCodeElement.value;
+            } else {
+              fullPhoneNumber = "+" + countryCodeElement.value
+            }
+            if (phoneNumberElement.value.startsWith("0")) {
+              fullPhoneNumber += phoneNumberElement.value.substring(1,phoneNumberElement.value.length)
+            } else {
+              fullPhoneNumber += phoneNumberElement.value
+            }
+            Homey.set("phoneNumber", fullPhoneNumber, function (err) {
                 if (err) return Homey.alert(err);
             });
         });

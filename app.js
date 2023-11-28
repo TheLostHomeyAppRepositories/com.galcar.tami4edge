@@ -47,8 +47,8 @@ class Tami4App extends Homey.App {
 
     //DEBUG
     //Reset all settings
-    // for (let key of Object.values(this.homey.settings.getKeys())) {
-    //   this.homey.settings.unset(key);
+    //  for (let key of Object.values(this.homey.settings.getKeys())) {
+    //    this.homey.settings.unset(key);
     // }
 
     //Upon setting configuration, go over the process of ackuiring a token
