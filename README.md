@@ -8,4 +8,6 @@ Installation Insturctions:
 3. Enter the OTP, and click the "Get Token" button
 After a few seconds, you token should appear on the bottom of the settings windows.
 
+NOTE: Currently, only a single user with a single device is supported. If you need multiple-users and/or multiple-devices support, feel free to contact me and I will try to add it.
+
 For any issues or requests, please use the "Report an issue" link

@@ -7,5 +7,5 @@
   "setable": false,
   "uiComponent": "sensor",
   "uiQuickAction": false,
-  "icon": "/assets/icon.svg"
+  "icon": "/assets/UV.svg"
 }

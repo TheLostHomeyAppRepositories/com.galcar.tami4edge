@@ -36,7 +36,7 @@ class Tami4EdgePlusDevice extends Device {
    * onAdded is called when the user adds the device, called just after pairing.
    */
   async onAdded() {
-    this.log('Tami4EdgePlusDevice has been added');
+    this.log('Tami4EdgePlusDevice has been added'); 
   }
 
   /**
@@ -83,6 +83,8 @@ class Tami4EdgePlusDevice extends Device {
    */
   async onDeleted() {
     this.log('Tami4EdgePlusDevice has been deleted');
+    if (this.refreshSettingsIntervalID) { clearInterval(this.refreshSettingsIntervalID) };
+    if (this.refreshFilterUVIntervalID) { clearInterval(this.refreshFilterUVIntervalID) };
   }
 
   /**
