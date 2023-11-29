@@ -19,10 +19,10 @@ class Tami4App extends Homey.App {
       try {
         await this.tami4Api.refreshToken();
         if (!refreshTokenIntervalID) {
-          refreshTokenIntervalID = setInterval(async () => await Tami4Api.refreshToken(), REFRESH_TOKEN_INTERVAL);
+          refreshTokenIntervalID = setInterval(async () => await this.tami4Api.refreshToken(), REFRESH_TOKEN_INTERVAL);
         }
       } catch (err) {
-        this.log("Failed to reate a new API");
+        this.log("Failed to create a new API");
         this.log(err);
       }
   }
@@ -70,10 +70,9 @@ class Tami4App extends Homey.App {
       }
     });
 
-
     //Token is written in the "token1" settings. Initilize API object by using it
     var token = this.homey.settings.get("token1");
-    if (token) {
+        if (token) {
       await this.#createApi(token);
     } else {
       this.tami4Api = null;
