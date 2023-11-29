@@ -73,7 +73,7 @@
       {
         "id": "filter_replacement_in_a_few_days",
         "title": {
-          "en": "The Fileter will need to be replaces in a few days"
+          "en": "The Filter will need to be replaces in a few days"
         },
         "titleFormatted": {
           "en": "The Filter will need to be replaced in exactly [[days]] days"
@@ -169,7 +169,7 @@
       {
         "id": "filter_replacement_in_a_few_days",
         "title": {
-          "en": "The Fileter will need to be replaces in a few days"
+          "en": "The Filter will need to be replaces in a few days"
         },
         "titleFormatted": {
           "en": "The Filter will need to be replaced in [[days]] days or less"
