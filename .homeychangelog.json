@@ -4,5 +4,8 @@
   },
   "1.0.1": {
     "en": "Split Country-code from Phone-number in settings window to be more reselient"
+  },
+  "1.0.2": {
+    "en": "Fixed a bug in refresh-token mechanism"
   }
 }
