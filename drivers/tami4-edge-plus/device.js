@@ -2,16 +2,20 @@
 
 const { Device } = require('homey');
 
-const REFRESH_SETTINGS_INTERVAL  = 60*1000; //1 minute
-const REFRESH_FILTER_UV_INTERVAL = 24*60*60*1000 //24 hours
+const REFRESH_SETTINGS_INTERVAL  = 60*1000;       //1 minute
+const REFRESH_FILTER_UV_INTERVAL = 24*60*60*1000; //24 hours
+const NUM_ERRORS_THRESHOLD       = 5;             //allow 5 retries of periodic functions until throwing an exception
 
 class Tami4EdgePlusDevice extends Device {
+
+  #numOfErrors;
 
   /**
    * onInit is called when the device is initialized.
    */
   async onInit() {
 
+    this.#numOfErrors = 0;
     this.registerCapabilityListener("boil_water", async (value) => {
       var status = await this.homey.app.tami4Api.boilWater(this.getData().id);
       if (status == 1) {
@@ -60,13 +64,9 @@ class Tami4EdgePlusDevice extends Device {
     try {
       await this.homey.app.tami4Api.setConfiguration(this.getData().id, config);
     } catch (err) {
-      this.log("Error setting device configuration");
-      this.log(err);
+      this.error("Error setting device configuration");
+      this.error(err);
     }
-    this.log('Device settings where changed from:');
-    this.log(oldSettings);
-    this.log("To:");
-    this.log(newSettings);
   }
 
   /**
@@ -93,9 +93,13 @@ class Tami4EdgePlusDevice extends Device {
   async refreshSettings() {
     try {
       var config = await this.homey.app.tami4Api.getConfiguration(this.getData().id);
+      this.#numOfErrors = 0;
     } catch (err) {
-      this.log("Error getting device configuration");
-      this.log(err);
+      this.error("Error getting device configuration");
+      this.error(err);
+      this.#numOfErrors ++;
+      this.error("Numer of consequential errors: " + this.#numOfErrors);
+      if (this.#numOfErrors == NUM_ERRORS_THRESHOLD) {throw new Error("Errors Threashold Limit Reached!")} else { return; };
     }
     await this.setSettings({
       smart_heating_mode : config.smartHeatingMode,
@@ -119,8 +123,17 @@ class Tami4EdgePlusDevice extends Device {
     // for (let drink of Object.values(genericDrinks)) {
     //   this.drinks.push({ id: drink.id, name: drink.name });
     // }
-    var userName = await this.homey.app.tami4Api.getCurrentUserName();
-    var userDrinks = await this.homey.app.tami4Api.getUserDrinks();
+    try {
+      var userName = await this.homey.app.tami4Api.getCurrentUserName();
+      var userDrinks = await this.homey.app.tami4Api.getUserDrinks();
+      this.#numOfErrors = 0;
+    } catch (err) {
+      this.error("Error getting device username / drinks");
+      this.error(err);
+      this.#numOfErrors ++;
+      this.error("Numer of consequential errors: " + this.#numOfErrors);
+      if (this.#numOfErrors == NUM_ERRORS_THRESHOLD) {throw new Error("Errors Threashold Limit Reached!")} else { return; };
+    }
     for (let drink of Object.values(userDrinks)) {
       this.drinks.push({ id: drink.id, name: userName + " - " + drink.name });
     }
@@ -132,9 +145,13 @@ class Tami4EdgePlusDevice extends Device {
   async refreshFileterUV() {
     try {
       var filterUvInfo = await this.homey.app.tami4Api.getFilterUVInfo();
+      this.#numOfErrors = 0;
     } catch (err) {
-      this.log("Error getting filter/uv info");
-      this.log(err);
+      this.error("Error getting filter/uv info");
+      this.error(err);
+      this.#numOfErrors ++;
+      this.error("Numer of consequential errors: " + this.#numOfErrors);
+      if (this.#numOfErrors == NUM_ERRORS_THRESHOLD) {throw new Error("Errors Threashold Limit Reached!")} else { return; };
     }
     var filterReplacementDays = Math.trunc((filterUvInfo.filterInfo.upcomingReplacement - Date.now())/1000/60/60/24);
     var uvReplacementDays = Math.trunc((filterUvInfo.uvInfo.upcomingReplacement - Date.now())/1000/60/60/24);
