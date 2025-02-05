@@ -10,5 +10,8 @@
   },
   "1.0.3": {
     "en": "Improved Error Handling"
+  },
+  "1.0.4": {
+    "en": "Adopt to API changes made by Tami4"
   }
 }
