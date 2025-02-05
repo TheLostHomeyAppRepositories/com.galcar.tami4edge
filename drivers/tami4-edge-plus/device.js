@@ -116,26 +116,20 @@ class Tami4EdgePlusDevice extends Device {
     }
 
 
-    //Get the device's drinks and udpate them
+    //Get the drinks and udpate them
     this.drinks = [];
-    // From some reason, Tami4API does not allow preparing generic drinks, only user drinks. So this is commented out :-(
-    // var genericDrinks = await this.homey.app.tami4Api.getGenericDrinks(this.getData().id);
-    // for (let drink of Object.values(genericDrinks)) {
-    //   this.drinks.push({ id: drink.id, name: drink.name });
-    // }
     try {
-      var userName = await this.homey.app.tami4Api.getCurrentUserName();
-      var userDrinks = await this.homey.app.tami4Api.getUserDrinks();
+      var userDrinks = await this.homey.app.tami4Api.getUserDrinks(this.getData().id);
       this.#numOfErrors = 0;
     } catch (err) {
-      this.error("Error getting device username / drinks");
+      this.error("Error getting device drinks");
       this.error(err);
       this.#numOfErrors ++;
       this.error("Numer of consequential errors: " + this.#numOfErrors);
       if (this.#numOfErrors == NUM_ERRORS_THRESHOLD) {throw new Error("Errors Threashold Limit Reached!")} else { return; };
     }
     for (let drink of Object.values(userDrinks)) {
-      this.drinks.push({ id: drink.id, name: userName + " - " + drink.name });
+      this.drinks.push({ id: drink.id, name: drink.name });
     }
   }
 
@@ -144,7 +138,7 @@ class Tami4EdgePlusDevice extends Device {
    */
   async refreshFileterUV() {
     try {
-      var filterUvInfo = await this.homey.app.tami4Api.getFilterUVInfo();
+      var filterUvInfo = await this.homey.app.tami4Api.getFilterUVInfo(this.getData().id);
       this.#numOfErrors = 0;
     } catch (err) {
       this.error("Error getting filter/uv info");

@@ -25,13 +25,12 @@ class Tami4EdgePlusDriver extends Driver {
     var tami4Devices = await this.homey.app.tami4Api.getDevices();
     let devices = [];
     for (let device of Object.values(tami4Devices)) {
-      var currentUser = await this.homey.app.tami4Api.getCurrentUserName();
       devices.push({
         data: {
             id: device.id
         },
         capabilities: ["boil_water","uv_lamp_remaining_days","filter_remaining_days"],
-        name: 'Tami4 - ' + currentUser
+        name: 'Tami4 - ' + device.psn
       });
     }
     return devices;

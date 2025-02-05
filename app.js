@@ -5,6 +5,7 @@ const Tami4Api    = require("./lib/Tami4Api");
 const Tami4OTPApi = require("./lib/Tami4OTPApi");
 
 const REFRESH_TOKEN_INTERVAL = 3*60*60*1000; //3 hours
+
 var refreshTokenIntervalID   = null;
 
 
@@ -14,8 +15,8 @@ class Tami4App extends Homey.App {
   * Create a new API object
   * @param {string} token the token to use
   */
-  async #createApi(token) {
-      this.tami4Api = new Tami4Api(token);
+  async #createApi(token, refreshToken) {
+      this.tami4Api = new Tami4Api(token,refreshToken);
       try {
         await this.tami4Api.refreshToken();
         if (!refreshTokenIntervalID) {
@@ -51,7 +52,7 @@ class Tami4App extends Homey.App {
     //    this.homey.settings.unset(key);
     // }
 
-    //Upon setting configuration, go over the process of ackuiring a token
+    //Upon setting configuration, go over the process of acquiring a token
     this.homey.settings.on('set', async(elementName) => {
       if (elementName === "phoneNumber") {
         var phoneNumber = this.homey.settings.get("phoneNumber");
@@ -61,10 +62,11 @@ class Tami4App extends Homey.App {
         var OTP = this.homey.settings.get("OTP");
         var token = await this.tami4OTPApi.getTokenByOTP(phoneNumber,OTP);
 
-        await this.#createApi(token.refresh_token);
+        await this.#createApi(token.accessToken, token.refreshToken);
 
         this.homey.settings.set("phone1",phoneNumber);
-        this.homey.settings.set("token1",token.refresh_token);  
+        this.homey.settings.set("token1",token.accessToken);  
+        this.homey.settings.set("refreshToken1",token.refreshToken);  
         this.homey.settings.unset("phoneNumber");
         this.homey.settings.unset("OTP");  
       }
@@ -72,8 +74,9 @@ class Tami4App extends Homey.App {
 
     //Token is written in the "token1" settings. Initilize API object by using it
     var token = this.homey.settings.get("token1");
+    var refreshToken = this.homey.settings.get("refreshToken1");
     if (token) {
-      await this.#createApi(token);
+      await this.#createApi(token,refreshToken);
     } else {
       this.tami4Api = null;
     }
